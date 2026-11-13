@@ -1,0 +1,73 @@
+﻿<Window x:Class="EMS.Dialogs.ServerEditDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EMS.Dialogs"
+        mc:Ignorable="d"
+        Title="新增服务器" Height="400" Width="320" 
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize">
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="服务器名称：" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,10" />
+        <TextBox x:Name="TxtServerName" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" Margin="0,0,10,10" Padding="5" />
+
+        <TextBlock Text="连接类型：" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,10" />
+        <ComboBox x:Name="CmbConnectionType" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,0,10" Padding="5"
+                  SelectionChanged="CmbConnectionType_SelectionChanged">
+            <ComboBoxItem Content="Windows 远程桌面 (RDP)" />
+            <ComboBoxItem Content="Linux SSH" />
+        </ComboBox>
+
+        <TextBlock Text="IP 地址：" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,10" />
+        <TextBox x:Name="TxtIP" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="1" Margin="0,0,10,10" Padding="5" />
+
+        <TextBlock Text="端口：" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,10" />
+        <TextBox x:Name="TxtPort" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,0,10" Padding="5" />
+
+        <TextBlock Text="账号：" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,10" />
+        <TextBox x:Name="TxtAccount" Grid.Row="4" Grid.Column="1" Margin="0,0,10,10" Padding="5" />
+        <CheckBox x:Name="ChkInheritAccount" Grid.Row="4" Grid.Column="2" Content="继承" VerticalAlignment="Center" Margin="0,0,0,10"
+                  Checked="ChkInheritAccount_Checked" Unchecked="ChkInheritAccount_Checked" />
+
+        <TextBlock Text="密码：" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,10" />
+        <PasswordBox x:Name="TxtPassword" Grid.Row="5" Grid.Column="1" Margin="0,0,10,10" Padding="5" />
+        <CheckBox x:Name="ChkInheritPassword" Grid.Row="5" Grid.Column="2" Content="继承" VerticalAlignment="Center" Margin="0,0,0,10"
+                  Checked="ChkInheritPassword_Checked" Unchecked="ChkInheritPassword_Checked" />
+
+        <!-- RDP 专属：服务器同时开启 SSH 服务（Windows OpenSSH Server）场景，账号密码复用上方主凭据 -->
+        <CheckBox x:Name="ChkSupportsSsh" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Content="支持 SSH（命令终端页签）" VerticalAlignment="Center" Margin="0,0,0,10"
+                  Visibility="Collapsed" Checked="ChkSupportsSsh_Checked" Unchecked="ChkSupportsSsh_Checked" />
+
+        <TextBlock x:Name="LblSshPort" Text="SSH 端口：" Grid.Row="7" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,10"
+                   Visibility="Collapsed" />
+        <TextBox x:Name="TxtSshPort" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,0,10" Padding="5" Text="22"
+                 Visibility="Collapsed" />
+
+        <StackPanel Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="3" 
+                    Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+            <Button x:Name="BtnOk" Content="确定" Width="80" Height="30" Margin="0,0,10,0" 
+                    Click="BtnOk_Click" IsDefault="True" />
+            <Button x:Name="BtnCancel" Content="取消" Width="80" Height="30" 
+                    Click="BtnCancel_Click" IsCancel="True" />
+        </StackPanel>
+    </Grid>
+</Window>

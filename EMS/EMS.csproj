@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net10.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseWPF>true</UseWPF>
+		<UseWindowsForms>true</UseWindowsForms>
+		<ApplicationIcon>Resources\logo.ico</ApplicationIcon>
+	</PropertyGroup>
+	<ItemGroup>
+		<!-- 进程内 MCP 服务端需要 ASP.NET Core 宿主（Kestrel） -->
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
+	<ItemGroup>
+		<Reference Include="AxInterop.MSTSCLib">
+			<HintPath>ActiveX\AxInterop.MSTSCLib.dll</HintPath>
+		</Reference>
+		<Reference Include="Interop.MSTSCLib">
+			<HintPath>ActiveX\Interop.MSTSCLib.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="AvalonEdit" Version="6.3.1.120" />
+		<PackageReference Include="ModelContextProtocol.AspNetCore" Version="1.2.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.5" />
+		<PackageReference Include="SfeWork.EntityFrameworkCore" Version="2.1.7" />
+		<PackageReference Include="SSH.NET" Version="2025.1.0" />
+		<PackageReference Include="XTerm.NET" Version="3.0.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Resources\Icons\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Resource Include="Resources\Icons\*.png" />
+	</ItemGroup>
+</Project>

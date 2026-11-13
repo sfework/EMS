@@ -1,0 +1,11 @@
+{
+  "name": "vl",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "scripts": {
+    "build": "dotnet publish -c Release -r win-x64 --self-contained false && start EMS\\bin\\Release\\net10.0-windows\\win-x64\\publish"
+  }
+}
